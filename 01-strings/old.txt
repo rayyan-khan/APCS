@@ -1,0 +1,40 @@
+
+      Queue<Customer> q = new LinkedList<Customer>();
+      int longestWaitTime = 0; 
+      int customersServed = 0;
+      int longestQueue = 0; 
+      int avgWait = 0;
+      int queueLength = 0;
+      int totalWaitTime = 0;
+      
+      for(int n = 0; n<1080; n++)
+      {
+         int prob = (int)(Math.random()*10);
+         if(q.peek != empty)
+            int abc = q.peek().getEnterTime();       
+         if(prob <= 2)
+         {
+            Customer c = new Customer(n);
+            queueLength++;
+            customersServed++;
+            totalWaitTime += c.getServeTime();
+         }
+         display(q);
+         if(q.peek() != null)
+         {
+            q.peek().setServeTime(q.peek().getServeTime()-1);
+            if(q.peek().getServeTime() == 0)
+            {
+               q.poll();
+            }
+            totalWaitTime--;
+         }
+         else if(totalWaitTime == 0)
+         {
+            int wait = n - abc;
+            if(queueLength>longestQueue)
+            {
+               longestQueue = queueLength;
+            }
+         }
+      }
